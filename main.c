@@ -50,8 +50,6 @@ float biasGradient(int *predictions, int *testGrades, int size){
 }
 
 
-
-
 int main(){
 
     // y = weight * x + bias
