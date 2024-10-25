@@ -13,7 +13,7 @@ void predict(int *predictions, int *hoursOfStudy, int size, int weight, int bias
 
 
 // Mean Squared Error (MSE)
-int costFunction(int *predictions, int *testGrades, int size){
+float costFunction(int *predictions, int *testGrades, int size){
 
     int cost = 0;
 
@@ -22,8 +22,35 @@ int costFunction(int *predictions, int *testGrades, int size){
         cost += pow(*(predictions + i) - *(testGrades + i), 2);
     }
 
-    return cost / (2 * size);
+    return (float) cost / (2 * size);
 }
+
+float weightGradient(int *predictions, int*hoursOfStudy, int *testGrades, int size){
+
+    int grad = 0;
+
+    for(int i = 0; i <= size - 1; ++i){
+
+        grad += (*(predictions + i) - *(testGrades + i)) * *(predictions + i);
+    }
+
+    return (float) grad / size;
+}
+
+float biasGradient(int *predictions, int *testGrades, int size){
+
+    int grad = 0;
+
+    for(int i = 0; i <= size - 1; ++i){
+
+        grad += *(predictions + i) - *(testGrades + i);
+    }
+
+    return (float) grad / size;
+}
+
+
+
 
 int main(){
 
