@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <math.h>
 
 void predict(int *predictions, int *hoursOfStudy, int size, int weight, int bias){
 
@@ -8,6 +9,20 @@ void predict(int *predictions, int *hoursOfStudy, int size, int weight, int bias
 
         *(predictions + i) = weight * (*(hoursOfStudy + i)) + bias;
     }
+}
+
+
+// Mean Squared Error (MSE)
+int costFunction(int *predictions, int *testGrades, int size){
+
+    int cost = 0;
+
+    for(int i = 0; i <= size - 1; ++i){
+        
+        cost += pow(*(predictions + i) - *(testGrades + i), 2);
+    }
+
+    return cost / (2 * size);
 }
 
 int main(){
