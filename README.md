@@ -1,1 +1,1 @@
-A linear regression model written completely from scratch in C
+A linear regression model written completely from scratch in C - work in progress
